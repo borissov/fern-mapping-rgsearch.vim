@@ -2,7 +2,7 @@ let s:Promise = vital#fern#import('Async.Promise')
 let s:F = vital#fern#import('System.Filepath')
 
 function! fern#mapping#rgsearch#init(disable_default_mappings) abort
-  nnoremap <buffer><silent> <Plug>(fern-action-rg-search) :<C-u>call <SID>call('rgsearch')<CR>
+  nnoremap <buffer><silent> <Plug>(fern-action-rgsearch) :<C-u>call <SID>call('rgsearch')<CR>
 endfunction
 
 function! s:call(name, ...) abort
