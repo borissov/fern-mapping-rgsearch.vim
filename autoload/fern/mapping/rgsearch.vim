@@ -26,7 +26,9 @@ function! s:map_rgsearch(helper) abort
 
     let commands = []
     for path in paths
-      call add(commands, 'rg --follow --glob "!.git*" --column --line-number --no-heading --color=always --colors "path:fg:190,220,255" --colors "line:fg:128,128,128" --smart-case "' . pattern . '" "' . path . '"')
+        if isdirectory(path)
+            call add(commands, 'rg --follow --glob "!.git*" --column --line-number --no-heading --color=always --colors "path:fg:190,220,255" --colors "line:fg:128,128,128" --smart-case "' . pattern . '" "' . path . '"')
+        endif
     endfor
     call fzf#vim#grep(
     \  join(commands,' ; '),
@@ -37,5 +39,3 @@ function! s:map_rgsearch(helper) abort
   return s:Promise.resolve()
         \.then({ -> a:helper.async.redraw() })
 endfunction
-
-
