@@ -30,6 +30,8 @@ function! s:map_rgsearch(helper) abort
             call add(commands, 'rg --follow --glob "!.git*" --column --line-number --no-heading --color=always --colors "path:fg:190,220,255" --colors "line:fg:128,128,128" --smart-case "' . pattern . '" "' . path . '"')
         endif
     endfor
+    
+    exe "normal! \<c-w>\<c-w>"
     call fzf#vim#grep(
     \  join(commands,' ; '),
     \  1,
