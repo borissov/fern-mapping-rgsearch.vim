@@ -20,8 +20,7 @@ function! s:map_rgsearch(helper) abort
 
     let pattern = input('The following '.len(paths).' nodes will be searched in. Enter the search pattern: ')
     if pattern ==# ''
-        echo 'Aborted'
-        return
+        return s:Promise.reject('Aborted')
     endif
 
     let commands = []
