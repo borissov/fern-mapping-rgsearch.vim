@@ -20,7 +20,7 @@ function! s:map_rgsearch(helper) abort
 
     let pattern = input('The following '.len(paths).' nodes will be searched in. Enter the search pattern: ')
     if pattern ==# ''
-        return s:Promise.reject('Aborted')
+        return s:Promise.reject('Aborted.')
     endif
 
     let commands = []
@@ -30,6 +30,10 @@ function! s:map_rgsearch(helper) abort
         endif
     endfor
     
+    
+    if len(commands) == 0
+      return s:Promise.reject('Invalid selection.')
+    endif
     exe "normal! \<c-w>\<c-w>"
     call fzf#vim#grep(
     \  join(commands,' ; '),
