@@ -32,11 +32,12 @@ function! s:map_rgsearch(helper) abort
     
     
     if len(commands) == 0
-      return s:Promise.reject('Invalid selection.')
+        return s:Promise.reject('Invalid selection.')
     endif
+    
     exe "normal! \<c-w>\<c-w>"
     call fzf#vim#grep(
-    \  join(commands,' ; '),
+    \  '('.join(commands,' ; ').') | sort -u',
     \  1,
     \  fzf#vim#with_preview('right:40%', '?')
     \ )
