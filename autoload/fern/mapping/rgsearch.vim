@@ -24,8 +24,8 @@ function! s:map_rgsearch(helper) abort
     endif
 
     let pattern = substitute(pattern, '\$', '\\\\\\$', '')
-    let pattern = substitute(pattern, '\(', '\\\\(', '')
-    let pattern = substitute(pattern, '\)', '\\\\)', '')
+    let pattern = substitute(pattern, '(', '\\\\(', '')
+    let pattern = substitute(pattern, ')', '\\\\)', '')
 
     let commands = []
     for path in paths
